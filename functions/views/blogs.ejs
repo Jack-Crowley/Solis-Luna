@@ -68,7 +68,7 @@
                                         <a class="dropdown-item" href="#"><%=region.name%> &raquo;</a>
                                         <ul class="dropdown-menu dropdown-submenu dropdown-submenu-right">
                                             <% region.regions.forEach((subsection) => { %>
-                                                <li><a class="dropdown-item" href="/region/<%=subsection.id%>"><%=subsection%></a></li>
+                                                <li><a class="dropdown-item" href="/region/<%=region.id%>/<%=subsection.id%>"><%=subsection.name%></a></li>
                                             <% }) %>
                                         </ul>
                                     </li>

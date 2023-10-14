@@ -55,16 +55,16 @@ async function formatRegions() {
             let childRegion = id.split(":")[1]
 
             if (expandedRegions.has(parentRegion)) {
-                expandedRegions.get(parentRegion).append(getFormattedId(childRegion))
+                expandedRegions.get(parentRegion).append({name: getFormattedId(childRegion), id: childRegion})
             }
             else {
-                expandedRegions.set(parentRegion, [getFormattedId(childRegion)])
+                expandedRegions.set(parentRegion, [{name: getFormattedId(childRegion), id: childRegion}])
             }
         }
     }
 
     expandedRegions.forEach((v, k) => {
-        formattedNavBar.push({ name: getFormattedId(k), expanded: true, regions: v, id: k })
+        formattedNavBar.push({ name: getFormattedId(k), expanded: true, regions: v, id: k})
     })
 
     return formattedNavBar
@@ -295,6 +295,10 @@ app.get("/region/:region", async (req, res) => {
         });
         res.render('region', { regions: await formatRegions(), events: await formatEvents(regionDB), persons: await formatPersons(regionDB), name: getFormattedId(region), picture: picture })
     }
+})
+
+app.get("/region/:region/:subsection", async (req, res) => {
+    res.redirect(`/region/${req.params.region}:${req.params.subsection}`)
 })
 
 app.get("/admin/", firebaseAuthMiddleware, async (req, res) => {
