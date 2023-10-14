@@ -298,7 +298,23 @@ app.get("/region/:region", async (req, res) => {
 })
 
 app.get("/region/:region/:subsection", async (req, res) => {
-    res.redirect(`/region/${req.params.region}:${req.params.subsection}`)
+    let region = `${req.params.region}:${req.params.subsection}`
+
+    let regionList = await getRegionsId()
+
+    if (!regionList.includes(region)) {
+        res.redirect("/")
+    }
+    else {
+        let regionDB = await db.collection("regions").doc(region);
+        let rDB = await regionDB.get();
+        let data = await rDB.data();
+        let picture = await bucket.file("regions/" + data.picture).getSignedUrl({
+            action: 'read',
+            expires: '03-09-2500',
+        });
+        res.render('region', { regions: await formatRegions(), events: await formatEvents(regionDB), persons: await formatPersons(regionDB), name: getFormattedId(region), picture: picture })
+    }
 })
 
 app.get("/admin/", firebaseAuthMiddleware, async (req, res) => {
