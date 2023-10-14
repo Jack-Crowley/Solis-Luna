@@ -62,20 +62,27 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="/executives">Executive Team</a></li>
-                            <% regions.forEach((region) => { %>
+                            <% regions.forEach((region)=> { %>
                                 <% if (region.expanded) { %>
                                     <li>
-                                        <a class="dropdown-item" href="#"><%=region.name%> &raquo;</a>
+                                        <a class="dropdown-item" href="#">
+                                            <%=region.name%> &raquo;
+                                        </a>
                                         <ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
-                                            <% region.regions.forEach((subsection) => { %>
-                                                <li><a class="dropdown-item" href="/region/<%=region.id%>/<%=subsection.id%>"><%=subsection.name%></a></li>
-                                            <% }) %>
+                                            <% region.regions.forEach((subsection)=> { %>
+                                                <li><a class="dropdown-item"
+                                                        href="/region/<%=region.id%>/<%=subsection.id%>">
+                                                        <%=subsection.name%>
+                                                    </a></li>
+                                                <% }) %>
                                         </ul>
                                     </li>
-                                <% } else { %>
-                                    <li><a class="dropdown-item" href="/region/<%=region.id%>"><%=region.name%></a></li>  
-                                <% } %>
-                            <% }) %>
+                                    <% } else { %>
+                                        <li><a class="dropdown-item" href="/region/<%=region.id%>">
+                                                <%=region.name%>
+                                            </a></li>
+                                        <% } %>
+                                            <% }) %>
                         </ul>
                     </li>
                     <li class="nav-item volunteer">
@@ -145,6 +152,14 @@
                         before playing so marvelously. We are so grateful to the members and can't wait to have them
                         back."</h3>
                     <h2>- Joshua Remland, Manager Volunteer Services (BNBMC)</h2>
+                </div>
+            </div>
+            <div class="col2">
+                <div class="r reveal">
+                    <h3>"The Students of the Solis & Luna Arts organization have visited the New Jersey Veterans
+                        Memorial Home this year and our Residents and staff really enjoyed the musical performances. We
+                        truly appreciate all their efforts, and we thank them for their continued support. We can't wait
+                        to have the group come back and perform."</h3>
                 </div>
             </div>
         </div>
