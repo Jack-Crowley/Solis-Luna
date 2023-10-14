@@ -71,14 +71,16 @@ textarea {
 
 .images {
     margin-top: 50px;
-    width: 40%;
-    margin-left: 30%;
+    width: 30%;
+    margin-left: 35%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 100px;
 }
 
 .images img {
     width: 100%;
+    border-radius: 40px;
 }
 
 .images img:hover {
