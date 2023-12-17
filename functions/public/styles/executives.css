@@ -1,0 +1,30 @@
+.persons {
+    grid-template-columns: repeat(5, 1fr) !important;
+}
+
+@media screen and (max-width: 767px) {
+    .section {
+        width: 100vw;
+        padding-top: 75px;
+    }
+
+    .ourteam {
+        font-size: 2rem !important;
+    } 
+
+    .persons {
+        display: block;
+    }
+
+    .person {
+        margin-bottom: 50px;
+    }
+
+    .person h5 {
+        font-size: 1.7rem;
+    }
+
+    .person h6 {
+        font-size: 1.5rem;
+    }
+}

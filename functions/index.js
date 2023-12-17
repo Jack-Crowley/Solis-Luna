@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 const express = require("express");
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const bodyParser = require('body-parser')
 
@@ -17,12 +18,7 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 app.use(express.static('public'));
-
-app.use(session({
-    secret: "d2FkdWpiYXd1amtkbwadawdsmlvMm51b25laXdhdWpuZA",
-    resave: false,
-    saveUninitialized: true
-}));
+app.use(cookieParser());
 
 async function getRegionsId() {
     let collection = await db.collection("regions").get()
@@ -56,16 +52,16 @@ async function formatRegions() {
             let childRegion = id.split(":")[1]
 
             if (expandedRegions.has(parentRegion)) {
-                expandedRegions.get(parentRegion).append({name: getFormattedId(childRegion), id: childRegion})
+                expandedRegions.get(parentRegion).append({ name: getFormattedId(childRegion), id: childRegion })
             }
             else {
-                expandedRegions.set(parentRegion, [{name: getFormattedId(childRegion), id: childRegion}])
+                expandedRegions.set(parentRegion, [{ name: getFormattedId(childRegion), id: childRegion }])
             }
         }
     }
 
     expandedRegions.forEach((v, k) => {
-        formattedNavBar.push({ name: getFormattedId(k), expanded: true, regions: v, id: k})
+        formattedNavBar.push({ name: getFormattedId(k), expanded: true, regions: v, id: k })
     })
 
     return formattedNavBar
@@ -168,13 +164,12 @@ async function formatPersons(region) {
 }
 
 function firebaseAuthMiddleware(req, res, next) {
-    const idToken = req.session.authToken;
-
-    if (idToken == undefined) {
-        res.redirect('/login')
+    const idToken = req.cookies['__session'];
+    res.setHeader('Cache-Control', 'private');
+    if (!idToken) {
+        res.redirect('/admin/login')
         return;
     }
-
     admin.auth()
         .verifyIdToken(idToken)
         .then(decodedToken => {
@@ -182,8 +177,26 @@ function firebaseAuthMiddleware(req, res, next) {
             next();
         })
         .catch(error => {
-            console.log(error)
-            res.redirect('/login')
+            res.redirect('/admin/login')
+            return;
+        });
+}
+
+function firebaseAuthMiddlewarePost(req, res, next) {
+    const idToken = req.body.authToken;
+    res.setHeader('Cache-Control', 'private');
+    if (!idToken) {
+        res.send({"error": "No Auth Token Provided"})
+        return;
+    }
+    admin.auth()
+        .verifyIdToken(idToken)
+        .then(decodedToken => {
+            req.user = decodedToken.user;
+            next();
+        })
+        .catch(error => {
+            res.send({"error": "Invalid Auth Token"})
             return;
         });
 }
@@ -197,7 +210,7 @@ app.get("/about", async (req, res) => {
 });
 
 app.get("/executives", async (req, res) => {
-    res.render('executives', { regions: await formatRegions()})
+    res.render('executives', { regions: await formatRegions() })
 });
 
 app.get("/blog", async (req, res) => {
@@ -322,12 +335,13 @@ app.get("/admin/", firebaseAuthMiddleware, async (req, res) => {
     res.render('admin/index')
 });
 
+
 app.get("/admin/login", async (req, res) => {
     res.render("login")
 })
 
-app.get("/admin/signout", async (req, res) => {
-    req.session.authToken = undefined
+app.get("/admin/signout", firebaseAuthMiddleware, async (req, res) => {
+    res.cookies["__session"] = undefined
     res.redirect("/admin/login")
 })
 
@@ -337,12 +351,11 @@ app.post("/admin/login", async (req, res) => {
         res.json({ "link": link })
     }
     else {
-        req.session.authToken = req.body.authToken;
         res.json({ "status": "success" })
     }
 })
 
-app.get("/admin/users", async (req, res) => {
+app.get("/admin/users", firebaseAuthMiddleware, async (req, res) => {
     let collection = await db.collection("users").get()
 
     let documents = collection.docs.map(doc => doc.id)
@@ -370,7 +383,7 @@ app.get("/admin/users", async (req, res) => {
     res.render('admin/usersPanel', { users: users })
 });
 
-app.post("/admin/users/search", async (req, res) => {
+app.post("/admin/users/search", firebaseAuthMiddlewarePost, async (req, res) => {
     let region = req.body.region;
 
     let collection;
@@ -396,7 +409,7 @@ app.post("/admin/users/search", async (req, res) => {
     res.json(matchingUsers);
 });
 
-app.post("/admin/events/search", async (req, res) => {
+app.post("/admin/events/search", firebaseAuthMiddlewarePost, async (req, res) => {
     let region = req.body.region;
 
     let collection;
@@ -422,7 +435,7 @@ app.post("/admin/events/search", async (req, res) => {
     res.json(matchingUsers);
 });
 
-app.post("/admin/blogs/search", async (req, res) => {
+app.post("/admin/blogs/search", firebaseAuthMiddlewarePost, async (req, res) => {
     let collection = await db.collection("blogs").get()
 
     let arr = await searchForSubString(collection.docs, req.body.name, "title", "author")
@@ -441,7 +454,7 @@ app.get("/admin/users/add", firebaseAuthMiddleware, async (req, res) => {
     res.render('admin/addUser')
 });
 
-app.get("/admin/users/edit/:uid", async (req, res) => {
+app.get("/admin/users/edit/:uid", firebaseAuthMiddleware, async (req, res) => {
     try {
         let document = await db.collection("users").doc(req.params.uid).get()
 
@@ -615,11 +628,11 @@ app.get("/admin/blogs", firebaseAuthMiddleware, async (req, res) => {
     res.render('admin/blogPanel', { blogs: blogs })
 });
 
-app.get("/admin/blogs/add", async (req, res) => {
+app.get("/admin/blogs/add", firebaseAuthMiddleware, async (req, res) => {
     res.render('admin/addBlog')
 });
 
-app.post("/admin/blogs/add", firebaseAuthMiddleware, async (req, res) => {
+app.post("/admin/blogs/add", firebaseAuthMiddlewarePost, async (req, res) => {
     let doc = db.collection("blogs").doc()
 
     await doc.set({
@@ -662,7 +675,7 @@ app.get("/admin/blogs/edit/:blogID", firebaseAuthMiddleware, async (req, res) =>
     res.render('admin/editBlog', { data: dataJSON })
 });
 
-app.post('/admin/blogs/edit/:blogID', firebaseAuthMiddleware, async (req, res) => {
+app.post('/admin/blogs/edit/:blogID', firebaseAuthMiddlewarePost, async (req, res) => {
     const imageBuffer = Buffer.from(req.body.file, 'base64')
     const imageByteArray = new Uint8Array(imageBuffer);
     const ending = req.body.name.split(".")[req.body.name.split(".").length - 1]
@@ -685,14 +698,12 @@ app.post('/admin/blogs/edit/:blogID', firebaseAuthMiddleware, async (req, res) =
 });
 
 app.get("/admin/blogs/delete/:blogID", firebaseAuthMiddleware, async (req, res) => {
-    await admin.auth().deleteUser(req.params.blogID)
-
     await db.collection("blogs").doc(req.params.blogID).delete()
 
-    res.redirect('/blogs')
+    res.redirect('/admin/blogs')
 });
 
-app.get("/admin/events", async (req, res) => {
+app.get("/admin/events", firebaseAuthMiddleware, async (req, res) => {
     let collection = await db.collection("events").get()
 
     let documents = collection.docs.map(doc => doc.id)

@@ -95,3 +95,37 @@ textarea {
     color:white;
     font-size: 2rem;
 }
+
+@media screen and (max-width: 767px) {
+    .section {
+        padding: 20px 20px;
+        box-sizing: border-box;
+    }
+
+    .names {
+        display: block;
+    }
+
+    .messageButton {
+        width: 60% !important;
+        text-align: center;
+    }
+
+    .images img {
+        width: 50%;
+        aspect-ratio: 1/1;
+        display: block;
+        border-radius: 1px;
+        margin: 25px auto;
+    }
+
+    .images {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+
+    .section2 h6 {
+        font-size: 25px;
+    }
+}

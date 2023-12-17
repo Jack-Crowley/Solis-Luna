@@ -31,6 +31,60 @@
 }
 
 .information h6::before {
-    content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0"; /* Four non-breaking spaces */
+    content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+    /* Four non-breaking spaces */
     display: inline-block;
+}
+
+.mobileBox {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        background-color: white;
+    }
+
+    body::after {
+        content: "\00a0";
+    }
+
+    .mobileBox {
+        display: block !important;
+        color: black !important;
+    }
+
+    .box {
+        display: none !important;
+    }
+
+    .description {
+        display: block;
+    }
+
+    .information {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .information {
+        margin-top: 20px
+    }
+
+    .author, .date, .description {
+        padding-left: 20px;
+    }
+
+    .information h6 {
+        font-size: 1.2rem;
+        padding-left: 30px;
+        padding-right: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .information h6::before {
+        display: none;
+    }
 }

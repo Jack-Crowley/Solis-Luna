@@ -112,3 +112,33 @@ input:focus {
     cursor: pointer;
     background-color: #ededed;
 }
+
+@media screen and (max-width: 767px) { 
+    body {
+        background-color: white;
+    }
+
+    .blogs {
+        padding:  20px 0;
+    }
+
+    .options {
+        margin-top: 10px;
+    }
+
+    .singleBlog {
+        display: block;
+        margin: 50px;
+        background-color: #f0eed9;
+        padding-bottom: 20px;
+        border-radius: 20px;
+    }
+
+    .singleBlog img {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .information > * {
+        margin-left: 10px;
+    }
+}

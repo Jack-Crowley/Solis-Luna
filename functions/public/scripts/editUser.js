@@ -17,6 +17,8 @@ document.querySelector('.modal-submit').addEventListener('click', () => {
 
     let formData = new FormData()
 
+    formData.append("authToken", document.cookie.split('; ').find(cookie => cookie.startsWith("__session="))?.split('=')[1])
+
     XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     const reader = new FileReader();

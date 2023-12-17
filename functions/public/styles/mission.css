@@ -61,4 +61,26 @@
         font-size: 1.3rem;
         padding-bottom: 25px;
     }
+
+    .image {
+        display: block;
+    }
+
+    .chloe {
+        margin: 50px;
+    }
+
+    .text > * {
+        display: block;
+        margin: 0 25px !important;
+        text-align: center;
+    }
+
+    .mission h5::before {
+        display: none;
+    }
+
+    .h6 {
+        font-size: 10px;
+    }
 }

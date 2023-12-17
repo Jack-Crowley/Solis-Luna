@@ -54,7 +54,8 @@ function getFormattedDate(date) {
 document.querySelector(".searchIcons").addEventListener('click', () => {
     let data = {
         region: regionTitle.textContent.trim(),
-        name: search.value
+        name: search.value,
+        authToken: document.cookie.split('; ').find(cookie => cookie.startsWith("__session="))?.split('=')[1],
     }
 
     let options = {

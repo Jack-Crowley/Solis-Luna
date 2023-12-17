@@ -187,4 +187,8 @@ button.dropdown-toggle {
     .regionBlob a, .rd a {
         width: 60%;
     }
+
+    .extraSpace {
+        display: none;
+    }
 }

@@ -65,20 +65,27 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="/executives">Executive Team</a></li>
-                            <% regions.forEach((region) => { %>
+                            <% regions.forEach((region)=> { %>
                                 <% if (region.expanded) { %>
                                     <li>
-                                        <a class="dropdown-item" href="#"><%=region.name%> &raquo;</a>
+                                        <a class="dropdown-item" href="#">
+                                            <%=region.name%> &raquo;
+                                        </a>
                                         <ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
-                                            <% region.regions.forEach((subsection) => { %>
-                                                <li><a class="dropdown-item" href="/region/<%=region.id%>/<%=subsection.id%>"><%=subsection.name%></a></li>
-                                            <% }) %>
+                                            <% region.regions.forEach((subsection)=> { %>
+                                                <li><a class="dropdown-item"
+                                                        href="/region/<%=region.id%>/<%=subsection.id%>">
+                                                        <%=subsection.name%>
+                                                    </a></li>
+                                                <% }) %>
                                         </ul>
                                     </li>
-                                <% } else { %>
-                                    <li><a class="dropdown-item" href="/region/<%=region.id%>"><%=region.name%></a></li>  
-                                <% } %>
-                            <% }) %>
+                                    <% } else { %>
+                                        <li><a class="dropdown-item" href="/region/<%=region.id%>">
+                                                <%=region.name%>
+                                            </a></li>
+                                        <% } %>
+                                            <% }) %>
                         </ul>
                     </li>
                     <li class="nav-item volunteer">
@@ -99,45 +106,64 @@
             <img src="<%= picture %>" alt="" />
             <div class="box">
                 <div class="items">
-                    <h2><%=name%></h2>
+                    <h2>
+                        <%=name%>
+                    </h2>
                     <a href="https://forms.gle/LFAhUKvXxsX3begr7">Apply to be a member!</a>
                     <a href="https://forms.gle/LFAhUKvXxsX3begr7" class="book">Book us!</a>
                 </div>
             </div>
         </div>
-        <div class="spacer"></div>
+        <div class="team section section3" id="team">
+            <h1>
+                <%=name%>
+            </h1>
+            <a href="https://forms.gle/LFAhUKvXxsX3begr7">Apply to be a member!</a>
+            <a href="https://forms.gle/LFAhUKvXxsX3begr7" class="book">Book us!</a>
+        </div>
+
         <div class="team section section2" id="team">
             <h1 class="text-center ourteam reveal">Our Team</h1>
             <div class="persons">
-                <% persons.forEach((person) => { %>
+                <% persons.forEach((person)=> { %>
                     <div class="person reveal" data-description="<%= person.bio %>">
                         <center>
                             <img src="<%=person.picture%>" alt="" class="pfp">
                         </center>
 
-                        <h5 class="text-center"><%=person.name%></h5>
+                        <h5 class="text-center">
+                            <%=person.name%>
+                        </h5>
 
                         <% if (person.role) { %>
-                            <h6 class="text-center"><%=person.role%></h6>
-                        <% } %>
+                            <h6 class="text-center">
+                                <%=person.role%>
+                            </h6>
+                            <% } %>
                     </div>
-                <% }) %>
+                    <% }) %>
             </div>
         </div>
         <div class="events section section1">
             <h1 class="text-center reveal">View Our Latest Events</h1>
             <div class="eventsHolder">
-                <% events.forEach((event) => { %>
+                <% events.forEach((event)=> { %>
                     <div class="reveal event active">
                         <img src="\images\\Events\\NJ\\december_9_2022.png" alt="" class="image reveal">
 
                         <div class="info reveal">
-                            <h2><%= event.name %></h2>
-                            <h5><%= event.date %></h5>
-                            <h6><%= event.description %></h6>
+                            <h2>
+                                <%= event.name %>
+                            </h2>
+                            <h5>
+                                <%= event.date %>
+                            </h5>
+                            <h6>
+                                <%= event.description %>
+                            </h6>
                         </div>
-                    </div>    
-                <% }) %>
+                    </div>
+                    <% }) %>
             </div>
             <div class="load-more reveal">
                 <h3>Load More</h3>
@@ -184,6 +210,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
+    <script src="/scripts/nav.js"></script>
 </body>
 
 </html>

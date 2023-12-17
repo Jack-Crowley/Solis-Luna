@@ -19,6 +19,7 @@ document.querySelector(".submit").addEventListener('click', () => {
 
     dataPairs.push(
         `${encodeURIComponent("regionName")}=${encodeURIComponent(n)}`,
+        `${encodeURIComponent("authToken")}=${encodeURIComponent(document.cookie.split('; ').find(cookie => cookie.startsWith("__session="))?.split('=')[1])}`
     );
 
     const urlEncodedData = dataPairs.join("&").replace(/%20/g, "+");

@@ -67,7 +67,7 @@ body {
 
 .spacer {
     background-color: #f6da8b;
-    width: 99vw;
+    width: 100vw;
     height: 80px;
 }
 
@@ -124,7 +124,13 @@ body {
         background-color: rgba(0,0,0,0);
     }
 
+    .nav {
+        width: 100vw !important;
+    }
+
     .navActive {
         background-color: rgba(0,0,0,.8);
+        width: 100vw !important;
     }
+
 }

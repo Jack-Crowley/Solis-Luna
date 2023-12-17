@@ -37,7 +37,7 @@ document.querySelector(".submit").addEventListener('click', () => {
     const dataPairs = [];
 
     const data = [["name",name],["description",description],["date",date],
-    ["region",region]]
+    ["region",region],["authToken",document.cookie.split('; ').find(cookie => cookie.startsWith("__session="))?.split('=')[1]]]
 
     data.forEach((item) => {
         dataPairs.push(

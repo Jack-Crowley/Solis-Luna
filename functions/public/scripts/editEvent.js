@@ -21,6 +21,8 @@ document.querySelector('.modal-submit').addEventListener('click', () => {
 
     const reader = new FileReader();
             
+    formData.append("authToken", document.cookie.split('; ').find(cookie => cookie.startsWith("__session="))?.split('=')[1])
+
     reader.onload = (event) => {
         const imageData = event.target.result;
         const base64ImageData = imageData.split(',')[1]

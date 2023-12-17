@@ -39,3 +39,57 @@ body {
 .ourteam {
     color:white;
 }
+
+.section3 {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .box {
+        display: none;
+    }
+
+    .section3 {
+        display: block;
+    }
+
+    .picture img {
+        width: 100vw !important;
+    }
+
+    .persons {
+        display: block !important;
+    }
+
+    .person {
+        margin-bottom: 50px !important;
+    }
+
+    .person h5 {
+        font-size: 1.7rem !important;
+    }
+
+    .person h6 {
+        font-size: 1.5rem !important;
+    }
+
+    .event {
+        display: block;
+        margin: 50px;
+        background-color: #f0eed9;
+        padding-bottom: 20px;
+        border-radius: 20px;
+    }
+
+    .event img {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .info > * {
+        margin-left: 10px;
+    }
+
+    .info h2 {
+        font-size: 1.6rem;
+    }
+}

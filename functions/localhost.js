@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 
 const db = require('./firebaseLogin');
@@ -11,17 +12,12 @@ const bucket = admin.storage().bucket();
 
 app.use(bodyParser.urlencoded({ extended: false, limit: '10mb' }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 app.use(express.static('public'));
-
-app.use(session({
-    secret: "d2FkdWpiYXd1amtkbwadawdsmlvMm51b25laXdhdWpuZA",
-    resave: false,
-    saveUninitialized: true
-}));
 
 async function getRegionsId() {
     let collection = await db.collection("regions").get()
@@ -167,7 +163,7 @@ async function formatPersons(region) {
 }
 
 function firebaseAuthMiddleware(req, res, next) {
-    const idToken = req.session.authToken;
+    let idToken = req.cookies.authToken;
 
     if (idToken == undefined) {
         res.redirect('/admin/login')
@@ -326,7 +322,7 @@ app.get("/admin/login", async (req, res) => {
 })
 
 app.get("/admin/signout", async (req, res) => {
-    req.session.authToken = undefined
+    req.cookies.authToken = undefined
     res.redirect("/admin/login")
 })
 
@@ -336,7 +332,7 @@ app.post("/admin/login", async (req, res) => {
         res.json({ "link": link })
     }
     else {
-        req.session.authToken = req.body.authToken;
+        req.cookies.authToken = req.body.authToken;
         res.json({ "status": "success" })
     }
 })

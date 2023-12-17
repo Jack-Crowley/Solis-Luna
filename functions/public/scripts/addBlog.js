@@ -25,7 +25,7 @@ document.querySelector(".submit").addEventListener('click', () => {
     const XHR = new XMLHttpRequest();
 
     const data = [["title",title],["description",description],["author",author],
-    ["content",content]]
+    ["content",content],["authToken",document.cookie.split('; ').find(cookie => cookie.startsWith("__session="))?.split('=')[1]]]
 
     const dataPairs = []
 

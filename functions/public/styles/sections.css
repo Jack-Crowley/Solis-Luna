@@ -37,5 +37,20 @@
 @media screen and (max-width: 767px) { 
     .section {
         padding: 15px;
+        width: 100vw;
     }
+
+    .section3 {
+        color:white;
+        padding: 50px 0;
+    }
+
+    .section3 a {
+        display: block;
+        width: 80%;
+        padding: 10px 0;
+        margin: 20px auto;
+    }
+
+    
 }

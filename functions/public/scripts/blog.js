@@ -39,7 +39,7 @@ document.querySelector(".searchIcons").addEventListener('click', () => {
         body: JSON.stringify(data)
     };
 
-    fetch('/admin/blog/search', options)
+    fetch('/blog/search', options)
         .then(response => response.json())
         .then(data => {
             document.querySelectorAll(".singleBlog").forEach((blog) => {
@@ -54,7 +54,7 @@ document.querySelector(".searchIcons").addEventListener('click', () => {
                 div.classList.add("singleBlog")
                 div.dataset.blogid = blog.blogID
                 div.addEventListener('click', (e) => {
-                    window.location.href = "/admin/blog/"+e.target.dataset.blogid
+                    window.location.href = "/blog/"+e.target.dataset.blogid
                 })
 
                 let img = document.createElement('img')

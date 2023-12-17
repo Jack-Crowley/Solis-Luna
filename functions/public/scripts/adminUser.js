@@ -106,7 +106,7 @@ document.querySelector(".submit").addEventListener('click', () => {
     const dataPairs = [];
 
     const data = [["firstName",firstName],["lastName",lastName],["email",email],
-    ["region",region],["position",position],["bio",bio],["writing",w],["instruments",instruments]]
+    ["region",region],["position",position],["bio",bio],["writing",w],["instruments",instruments],["authToken",document.cookie.split('; ').find(cookie => cookie.startsWith("__session="))?.split('=')[1]]]
 
     data.forEach((item) => {
         dataPairs.push(

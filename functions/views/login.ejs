@@ -88,10 +88,11 @@
             setTimeout(() => {
                 // form.onsubmit = passwordReset;
                 password.style.display = "none"
-                next.textContent = "Send"
+                submit.value = "Send"
                 forgot.style.display = "none"
                 title.textContent = "Reset Password"
                 parent.classList.remove("switchFrame")
+                loginScreen=false;
             }, 1250)
         })
 
@@ -109,10 +110,13 @@
             signInWithEmailAndPassword(getAuth(), e, p)
                     .then(async (userCredential) => {
                         const user = userCredential.user;
+                        let token = await user.getIdToken()
                         let data = {
                             type: "uid",
-                            authToken: await user.getIdToken(),
+                            authToken: token,
                         };
+
+                        document.cookie = "__session="+token;
 
                         let options = {
                             method: 'POST',
