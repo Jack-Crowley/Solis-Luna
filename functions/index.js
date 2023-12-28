@@ -112,11 +112,16 @@ async function formatEvents(region) {
 
     let events = []
 
-    eventIds.docs.forEach((event) => {
+    eventIds.docs.forEach(async (event) => {
         let data = event.data()
         let date = new Date(data.date._seconds * 1000)
 
-        events.push({ name: data.name, date: getFormattedDate(date), description: data.description })
+        let picture = await bucket.file("events/" + event.id + ".jpg").getSignedUrl({
+            action: 'read',
+            expires: '03-09-2500',
+        });
+
+        events.push({ name: data.name, date: getFormattedDate(date), description: data.description, picture:picture })
     })
 
     return events
@@ -451,7 +456,7 @@ app.post("/admin/blogs/search", firebaseAuthMiddlewarePost, async (req, res) => 
 });
 
 app.get("/admin/users/add", firebaseAuthMiddleware, async (req, res) => {
-    res.render('admin/addUser')
+    res.render('admin/addUser', { regions: await formatRegions() })
 });
 
 app.get("/admin/users/edit/:uid", firebaseAuthMiddleware, async (req, res) => {
