@@ -145,6 +145,10 @@ async function formatPersons(region) {
         let document = await db.collection('users').doc(person).get()
 
         let data = document.data()
+        
+        if (data == undefined) {
+            continue;
+        }
 
         if (!data.pfpURL) data.pfpURL = "placeholder.png"
 
