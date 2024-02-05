@@ -22,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./images/Favicon/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="/styles/navbar.css">
-    <link rel="stylesheet" href="/styles/revealingText.css">
+    <link rel="stylesheet" href="/styles/ingText.css">
     <link rel="stylesheet" href="/styles/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,11 +30,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400&family=Lato:wght@400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles/banner.css">
-    <link rel="stylesheet" href="/styles/sections.css">
-    <link rel="stylesheet" href="/styles/blog.css">
-</head>
 
+    <link rel="stylesheet" href="/styles/banner.css">
+    <link rel="stylesheet" href="/styles/events.css">
+    <link rel="stylesheet" href="/styles/sections.css">
+    <link rel="stylesheet" href="/styles/region.css">
+    <link rel="stylesheet" href="/styles/team.css">
+    <link rel="stylesheet" href="/styles/fullteam.css">
+    <link rel="stylesheet" href="/styles/executives.css">
+    <link rel="stylesheet" href="/styles/podcast.css">
+
+</head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid nav">
@@ -67,7 +73,7 @@
                                 <% if (region.expanded) { %>
                                     <li>
                                         <a class="dropdown-item" href="#"><%=region.name%> &raquo;</a>
-                                        <ul class="dropdown-menu dropdown-submenu dropdown-submenu-right">
+                                        <ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
                                             <% region.regions.forEach((subsection) => { %>
                                                 <li><a class="dropdown-item" href="/region/<%=region.id%>/<%=subsection.id%>"><%=subsection.name%></a></li>
                                             <% }) %>
@@ -88,33 +94,43 @@
                     <li class="nav-item blog">
                         <a class="nav-link" href="/podcast">Podcast</a>
                     </li>
-                    <li class="nav-item blog" style="color:black !important;">
+                    <li class="nav-item blog">
                         <a class="nav-link" href="/contact">Contact Us</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="picture">
-        <img class='w-100 img-wide max-h-px' src="<%=blog.picture%>" alt="" />
-        <div class="box">
-            <h3><%=blog.title%></h3>
-            <h5 class="text-white image-text"><%=blog.description%></h5>
+    <div class="regular">
+        <div class="team section" id="team">
+            <h1 class="text-center ourteam ">Listen to Our Podcast</h1>
+            <div class="pGrid">
+                <div class="info">
+                    <h1>The Solis And Luna Arts Podcast</h1>
+                    <h3>
+                        We believe that music improves daily life in many ways, whether it be through performing or listening. We hope to create a podcast that explores the impact of music on mental health for all age groups.</h3>
+                </div>
+                <div class="embed">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/4nyCM6CHrLnu43uTBFJ3VX?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="spacer"></div>
-    <div class="information">
-        <h1 class="text-center title"><%=blog.title%></h1>
-        <h3 class="author">By <%=blog.author%></h3>
-        <h5 class="date"><%=blog.date%></h5>
-        <h5 class="description"><%=blog.description%></h5>
-        <h6 class="text"><%=blog.content%></h6>
+
+    <div class="profile">
+        <div class="individualProfile" id="profile">
+            <button class="goback">Go Back</button>
+            <div class="information">
+                <h1></h1>
+                <h5></h5>
+            </div>
+            <img src="./images/PFP/Chloe_Cho.webp" alt="" class="bigProfileImage">
+        </div>
     </div>
+    <script src="/scripts/makePerson.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
-    <script src="/scripts/revealingText.js"></script>
-    <script src="/scripts/singleBlog.js"></script>
     <script src="/scripts/nav.js"></script>
 </body>
 

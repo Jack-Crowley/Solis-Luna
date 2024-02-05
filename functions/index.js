@@ -52,7 +52,7 @@ async function formatRegions() {
             let childRegion = id.split(":")[1]
 
             if (expandedRegions.has(parentRegion)) {
-                expandedRegions.get(parentRegion).append({ name: getFormattedId(childRegion), id: childRegion })
+                expandedRegions.get(parentRegion).push({ name: getFormattedId(childRegion), id: childRegion })
             }
             else {
                 expandedRegions.set(parentRegion, [{ name: getFormattedId(childRegion), id: childRegion }])
@@ -222,6 +222,35 @@ app.get("/executives", async (req, res) => {
     res.render('executives', { regions: await formatRegions() })
 });
 
+app.get("/podcast", async (req, res) => {
+    res.render('podcast', { regions: await formatRegions() })
+});
+
+app.get("/writing", async (req, res) => {
+    let peopleDB = await db.collection("users").get();
+
+    let persons = []
+
+    for (let i = 0; i < peopleDB.docs.length; i++) {
+        let doc = peopleDB.docs[i]
+
+        let people = doc.data()
+        
+        if (!people.isWriting) continue;
+
+        if (!people.pfpURL) people.pfpURL = "placeholder.png";
+
+        people.picture = await bucket.file("members/" + people.pfpURL).getSignedUrl({
+            action: 'read',
+            expires: '03-09-2500',
+        });
+
+        persons.push(people)
+    }
+    
+    res.render('writing', { regions: await formatRegions(), persons: persons })
+})
+
 app.get("/blog", async (req, res) => {
     let collection = await db.collection("blogs").get()
 
@@ -316,7 +345,8 @@ app.get("/region/:region", async (req, res) => {
             action: 'read',
             expires: '03-09-2500',
         });
-        res.render('region', { regions: await formatRegions(), events: await formatEvents(regionDB), persons: await formatPersons(regionDB), name: getFormattedId(region), picture: picture })
+        let link = (data.link == undefined) ? "#" : data.link
+        res.render('region', { regions: await formatRegions(), events: await formatEvents(regionDB), persons: await formatPersons(regionDB), name: getFormattedId(region), picture: picture, link:link })
     }
 })
 
@@ -336,7 +366,9 @@ app.get("/region/:region/:subsection", async (req, res) => {
             action: 'read',
             expires: '03-09-2500',
         });
-        res.render('region', { regions: await formatRegions(), events: await formatEvents(regionDB), persons: await formatPersons(regionDB), name: getFormattedId(region), picture: picture })
+        let link = (data.link == undefined) ? "#" : data.link
+        console.log(link)
+        res.render('region', { regions: await formatRegions(), events: await formatEvents(regionDB), persons: await formatPersons(regionDB), name: getFormattedId(region), picture: picture, link:link })
     }
 })
 

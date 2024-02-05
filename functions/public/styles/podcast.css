@@ -1,0 +1,42 @@
+.pGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+}
+
+.embed, .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-color: #4b70ad;
+}
+
+.pGrid {
+    margin-top: 50px;
+}
+
+.info {
+    text-align: center;
+}
+
+.info h1 {
+    color:rgb(255, 255, 255);
+    font-size: 2.5em;
+}
+
+.info h3 {
+    color:rgb(237, 237, 237);
+}
+
+@media screen and (max-width: 767px) { 
+    .pGrid {
+        display: block;
+    }
+
+    .pGrid > * {
+        margin: 20px 50px !important;
+    }
+}

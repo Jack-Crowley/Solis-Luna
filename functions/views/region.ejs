@@ -65,6 +65,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="/executives">Executive Team</a></li>
+                            <li><a class="dropdown-item" href="/writing">Writing Team</a></li>
                             <% regions.forEach((region)=> { %>
                                 <% if (region.expanded) { %>
                                     <li>
@@ -95,6 +96,9 @@
                         <a class="nav-link" href="/blog">Blog</a>
                     </li>
                     <li class="nav-item blog">
+                        <a class="nav-link" href="/podcast">Podcast</a>
+                    </li>
+                    <li class="nav-item blog">
                         <a class="nav-link" href="/contact">Contact Us</a>
                     </li>
                 </ul>
@@ -109,8 +113,7 @@
                     <h2>
                         <%=name%>
                     </h2>
-                    <a href="https://forms.gle/LFAhUKvXxsX3begr7">Apply to be a member!</a>
-                    <a href="https://forms.gle/LFAhUKvXxsX3begr7" class="book">Book us!</a>
+                    <a href="<%=link%>">Apply to be a member!</a>
                 </div>
             </div>
         </div>
@@ -118,8 +121,7 @@
             <h1>
                 <%=name%>
             </h1>
-            <a href="https://forms.gle/LFAhUKvXxsX3begr7">Apply to be a member!</a>
-            <a href="https://forms.gle/LFAhUKvXxsX3begr7" class="book">Book us!</a>
+            <a href="<%=link%>">Apply to be a member!</a>
         </div>
 
         <div class="team section section2" id="team">
