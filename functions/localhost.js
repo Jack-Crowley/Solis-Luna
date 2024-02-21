@@ -324,8 +324,8 @@ app.get("/volunteer", async (req, res) => {
     res.render('volunteer', { regions: await formatRegions() })
 });
 
-app.get("/contact", async (req, res) => {
-    res.render('contact', { regions: await formatRegions() })
+app.get("/getinvolved", async (req, res) => {
+    res.render('getinvolved', { regions: await formatRegions() })
 });
 
 app.get("/region/:region", async (req, res) => {

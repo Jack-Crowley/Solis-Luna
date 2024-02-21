@@ -22,7 +22,7 @@
     color:#b7b7b7;
 }
 
-.submit {
+.submit, .updateText, .cancelEdit, .submitEdit {
     margin-top: 10px;
     display: block;
     text-decoration: none;
@@ -35,8 +35,26 @@
     font-size: 2rem !important;
     grid-column-start: 1;
     grid-column-end: 3;
-    margin-top: 50px;
+    margin-top: 0;
     border-radius: 50px;
+}
+
+.updateText, .cancelEdit {
+    background-color: #cfd44f;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.cancelEdit {
+    background-color: #e26969;
+}
+
+.submitEdit {
+    background-color: #7fe269;
+}
+
+.updateText:hover {
+    background-color: #989c2f;
 }
 
 .image {
@@ -63,4 +81,62 @@
 .submit:hover {
     cursor: pointer;
     background-color: #6f2971;
+}
+
+.modal {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel {
+    display: none;
+}
+
+.info input {
+    display: inline-block;
+    border: none;
+    outline: none;
+    background-color: #303030;
+    border-bottom: 3px solid rgb(10, 179, 131);
+    width: 80%;
+    color: white;
+}
+
+.info {
+    background-color: #303030;
+    padding: 50px;
+    padding-top: 0;
+}
+
+.info label {
+    display: inline-block;
+    color:white;
+}
+
+.inputDiv {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    column-gap: 50px;
+    margin-top: 20px;
+}
+
+.textArea {
+    text-align: center;
+}
+
+.textArea h3 {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.textArea textarea {
+    background-color: #303030;
+    outline: none;
+    border: 3px solid rgb(10, 179, 131);
+    color: white;
+    padding: 10px;
+    width: 100%;
 }

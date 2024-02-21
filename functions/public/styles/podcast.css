@@ -20,6 +20,7 @@ body {
 
 .info {
     text-align: center;
+    display: block;
 }
 
 .info h1 {
