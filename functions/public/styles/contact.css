@@ -38,13 +38,18 @@ textarea {
 }
 
 .messageButton {
-    background-color: #f0f485;
+    background-color: white;
     display: block;
     text-decoration: none;
-    color:white !important;
+    color: rgb(20, 33, 55) !important;
     width: 20%;
     margin-left: 40%;
     text-align: center;
+}
+
+.spacer {
+    height: 25px;
+    background-color: white;
 }
 
 .icons {
@@ -83,6 +88,11 @@ textarea {
 .images img {
     width: 100%;
     border-radius: 40px;
+}
+
+.calendar .title {
+    font-size: 3rem;
+    padding: 20px 0;
 }
 
 .images img:hover {
