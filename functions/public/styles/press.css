@@ -65,3 +65,48 @@
     width: 50%;
     border-radius: 50%;
 }
+
+.mobile-logo {
+    display: none;
+}
+
+@media screen and (max-width: 767px) { 
+    .press-1, .press-2 {
+        display: block;
+    } 
+
+    .mobile-logo {
+        display: inline-block;
+    }
+
+    .hid-logo {
+        display: none;
+    }
+
+    .logo img {
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 25px;
+    }
+
+    .info a {
+        width: 100%;
+    }
+
+    .info {
+        padding: 0;
+    }
+
+    .press-div {
+        padding: 50px;
+        padding-top: 0;
+    }
+
+    .team {
+        margin-top: 100px;
+    }
+
+    .team {
+        padding-bottom: 0;
+    }
+}
