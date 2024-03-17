@@ -34,27 +34,17 @@
     <link rel="stylesheet" href="/styles/banner.css">
     <link rel="stylesheet" href="/styles/events.css">
     <link rel="stylesheet" href="/styles/sections.css">
-    <link rel="stylesheet" href="/styles/region.css">
-    <link rel="stylesheet" href="/styles/team.css">
-    <link rel="stylesheet" href="/styles/fullteam.css">
-    <link rel="stylesheet" href="/styles/executives.css">
+    <link rel="stylesheet" href="/styles/podcast.css">
+    <link rel="stylesheet" href="/styles/press.css">
 
-    <style>
-        .section {
-            background-color: #ffe98f !important;
-        }
-
-        .person, .nav-link, .ourteam {
-            color: black !important;
-        }
-    </style>
+</head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid nav">
             <a class="navbar-brand" href="/">
                 <img src="/images/solis.png" alt="" height="100">
             </a>
-            <a class="nav-link nav-header" style="color:#000000 !important;">Solis and Luna Arts</a>
+            <a class="nav-link nav-header">Solis and Luna Arts</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -110,38 +100,43 @@
     </nav>
     <div class="regular">
         <div class="team section" id="team">
-            <h1 class="text-center ourteam ">Our Writing Team</h1>
-            <div class="persons">
-                <div class="person" data-description="Hello">
-                    <center>
-                        <img src="\images\PFP\Madhav_Dua.jpeg" alt="" class="pfp">
-                    </center>
-                    <h5 class="text-center">Madhav Dua</h5>
-                    <h6 class="text-center">Writing Manager</h6>
-                </div>
-                <% persons.forEach((person) => { %>
-                    <div class="person" data-description="Hello">
-                        <center>
-                            <img src="<%=person.picture%>" alt="" class="pfp">
-                        </center>
-                        <h5 class="text-center"><%=person.fullName%></h5>
-                    </div>
-                <% }) %>
+            <h1 class="text-center ourteam ">Press</h1>
+        </div>
+    </div>
+
+    <div class="press-div">
+        <div class="press-1">
+            <div class="info">
+                <h1>Medium</h1>
+                <h3>Young Social Impact Heroes: Why and How Chloe Cho of Solis of Luna Arts Is Helping To Change Our World</h3>
+                <a href="https://medium.com/authority-magazine/young-social-impact-heroes-why-and-how-chloe-cho-of-solis-of-luna-arts-is-helping-to-change-our-dc542ca9dfbb">Go To Article</a>
+            </div>
+            <div class="logo">
+                <img src="/images/Logos/medium.png" alt="">
+            </div>
+        </div>
+        <div class="press-2">
+            <div class="logo">
+                <img src="/images/Logos/thrive_insider.png" alt="">
+            </div>
+            <div class="info">
+                <h1>Thrive Insider</h1>
+                <h3>The Story of Solis & Luna Arts A conversation with the 3 leaders behind a national non-profit organization</h3>
+                <a href="https://thriveinsider.com/articles/the-story-of-solis-luna-arts-a-conversation-with-the-3-leaders-behind-a-national-non-profit-organization/">Go To Article</a>
+            </div>
+        </div>
+        <div class="press-1">
+            <div class="info">
+                <h1>Medium</h1>
+                <h3>Exceiondaiwnd uinwauiod nawuiond ioawndionawiodnawiondjkanjkwndjknaw jkdnw ajknd jkwand jknaw jkdnwjaknd jkawndjknaw jknd jwnajdknjkn</h3>
+                <a href="">Go To Article</a>
+            </div>
+            <div class="logo">
+                <img src="/images/Logos/medium.png" alt="">
             </div>
         </div>
     </div>
 
-    <div class="profile">
-        <div class="individualProfile" id="profile">
-            <button class="goback">Go Back</button>
-            <div class="information">
-                <h1></h1>
-                <h5></h5>
-            </div>
-            <img src="./images/PFP/Chloe_Cho.webp" alt="" class="bigProfileImage">
-        </div>
-    </div>
-    <script src="/scripts/makePerson.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>

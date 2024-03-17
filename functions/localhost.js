@@ -328,6 +328,10 @@ app.get("/getinvolved", async (req, res) => {
     res.render('getinvolved', { regions: await formatRegions() })
 });
 
+app.get("/press", async (req, res) => {
+    res.render('press', { regions: await formatRegions() })
+});
+
 app.get("/region/:region", async (req, res) => {
     let region = req.params.region
 
