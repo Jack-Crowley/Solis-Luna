@@ -57,50 +57,30 @@
             </div>
         </div>
     </nav>
-    <div class="panel">
-        <div class="info">
-            <h1>Blog Information</h1>
-            <h2>Title: <span class="information"><%= data.title %></span></h2>
-            <h2>Description: <span class="information"><%= data.description %></span></h2>
-            <h2>Author: <span class="information"><%= data.author %></span></h2>
-            
-            <h1>Blog Image</h1>
-            <div class="imageFile">
-                <img src="<%= data.picture %>" alt="">
-
-                <input type="file" class="file">
-            </div>
-        </div>
-        <div class="text">
-            <h1>Blog Contents</h1>
-            <h6><%= data.content %></h6>
-        </div>
-        <a class="updateText" href="/admin/blogs">Edit Text</a>
-        <a class="submit" href="/admin/blogs">Done</a>
-    </div>
-
     <div class="modal">
         <div class="info">
-            <h1>Change Text</h1>
+            <h1>Change Blog</h1>
             <div class="inputDiv">
                 <label for="title">Title: </label>
-                <input name="title" type="text">
+                <input name="title" class="title" type="text" value="<%= data.title %>">
             </div>
             <div class="inputDiv">
-                <label for="title">Description: </label>
-                <input name="title" type="text">
+                <label for="desc">Description: </label>
+                <input name="desc" class="desc" type="text" value="<%= data.description %>">
             </div>
             <div class="inputDiv">
-                <label for="title">Author: </label>
-                <input name="title" type="text">
+                <label for="auth">Author: </label>
+                <input name="auth" class="auth" type="text" value="<%= data.author %>">
             </div>
             <div class="textArea">
                 <h3>Contents: </h3>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea class="content" name="" id="" cols="30" rows="10"><%= data.content %></textarea>
             </div>
 
-            <a class="cancelEdit" href="/admin/blogs">Edit Text</a>
-            <a class="submitEdit" href="/admin/blogs">Done</a>
+            <div class="photo">
+                <input type="file" name="file" id="" class="file" placeholder="bio">
+            </div>
+            <a class="submitEdit" href="#">Done</a>
         </div>
     </div>
 

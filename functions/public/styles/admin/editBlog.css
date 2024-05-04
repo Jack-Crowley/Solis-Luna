@@ -22,7 +22,7 @@
     color:#b7b7b7;
 }
 
-.submit, .updateText, .cancelEdit, .submitEdit {
+.submit, .updateText, .cancelEdit, .submitEdit, .changePhoto {
     margin-top: 10px;
     display: block;
     text-decoration: none;
@@ -53,8 +53,25 @@
     background-color: #7fe269;
 }
 
+.changePhoto {
+    background-color: #e084e3;
+    margin: 10px auto;
+}
+
 .updateText:hover {
     background-color: #989c2f;
+}
+
+.photo {
+    border: 1px solid rgb(10, 179, 131);
+    margin: 10px auto;
+}
+
+.photo input {
+    margin: 10px 0;
+    font-size: 1.3rem;
+    border: none !important;
+    width: 100%;
 }
 
 .image {
@@ -130,6 +147,10 @@
     color: white;
     text-align: center;
     margin-top: 50px;
+}
+
+.submitEdit, .changePhoto {
+    font-size: 1.3rem !important;
 }
 
 .textArea textarea {

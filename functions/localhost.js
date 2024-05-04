@@ -725,6 +725,12 @@ app.get("/admin/blogs/edit/:blogID", firebaseAuthMiddleware, async (req, res) =>
 });
 
 app.post('/admin/blogs/edit/:blogID', firebaseAuthMiddlewarePost, async (req, res) => {
+    let document = db.collection("blogs").doc(req.params.blogID)
+    document.update({ author: req.body.author, content: req.body.content, description: req.body.description, title: req.body.title })
+    res.json({ "status": "good" })
+});
+
+app.post('/admin/blogs/edit/photo/:blogID', firebaseAuthMiddlewarePost, async (req, res) => {
     const imageBuffer = Buffer.from(req.body.file, 'base64')
     const imageByteArray = new Uint8Array(imageBuffer);
     const ending = req.body.name.split(".")[req.body.name.split(".").length - 1]
@@ -744,6 +750,7 @@ app.post('/admin/blogs/edit/:blogID', firebaseAuthMiddlewarePost, async (req, re
         .catch(err => {
             console.log(`Unable to upload image ${err}`)
         })
+
 });
 
 app.get("/admin/blogs/delete/:blogID", firebaseAuthMiddleware, async (req, res) => {
