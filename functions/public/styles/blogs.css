@@ -141,4 +141,16 @@ input:focus {
     .information > * {
         margin-left: 10px;
     }
+
+    .information h2 {
+        font-size: 1.3rem;
+    }
+
+    .information h3, .information h4 {
+        font-size: 1.1rem;
+    }
+
+    .singleBlog {
+        margin: 20px 10px !important;
+    }
 }
