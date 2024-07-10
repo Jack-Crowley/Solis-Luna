@@ -39,12 +39,20 @@
 }
 
 .text h5 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.text h6 {
+    font-size: 2rem;
 }
 
 .chloe img {
     width: 100%;
     height: auto;
+}
+
+.text {
+    padding: 0 15%;
 }
 
 @media screen and (max-width: 767px) { 

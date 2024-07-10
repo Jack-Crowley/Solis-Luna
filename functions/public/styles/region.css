@@ -44,6 +44,14 @@ body {
     display: none;
 }
 
+.event {
+    display: none;
+}
+
+.event.active {
+    display: grid;
+}
+
 @media screen and (max-width: 767px) {
     body {
         max-width: 99vw;
