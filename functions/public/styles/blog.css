@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 .box h3 {
     font-size: 3.2rem !important;
 }
@@ -8,9 +10,28 @@
 }
 
 .information {
-    padding: 100px;
-    width: 60%;
-    margin-left: 20%;
+    padding: 50px;
+    width: 80%;
+    margin-left: 10%;
+    font-family: "Roboto", Helvetica, sans-serif !important;
+    font-weight: 300 !important;
+}
+
+.headerimg {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.date {
+    margin-top: 20px;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #494949;
 }
 
 .date {
@@ -26,8 +47,10 @@
 }
 
 .information h6 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     margin: 15px 0;
+    font-weight: 400;
+    color:#494949;
 }
 
 .information h6::before {
@@ -38,6 +61,20 @@
 
 .mobileBox {
     display: none;
+}
+
+.head-spacer {
+    height: 150px;
+}
+
+a.nav-link.nav-header {
+    color: navy !important;
+    font-weight: bolder;
+}
+
+a.nav-link {
+    color: navy !important;
+    font-weight:500;
 }
 
 @media screen and (max-width: 767px) {
