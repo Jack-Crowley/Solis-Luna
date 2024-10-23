@@ -19,6 +19,7 @@
     "firebase": "^10.1.0",
     "firebase-admin": "^11.8.0",
     "firebase-functions": "^4.3.1",
+    "functions": "file:",
     "morgan": "^1.10.0",
     "uuid-v4": "^0.1.0"
   },
