@@ -1,0 +1,53 @@
+.youtube-archive .card {
+    width: 100%;
+    border: none !important;
+    border-radius: 50px !important;
+}
+
+.youtube-archive .card-title {
+    color: white;
+
+}
+
+.youtube-archive .card-body {
+    text-align: center;
+    background-color: #3f649f;
+    border-radius: 0 0 20px 20px;
+}
+
+.youtube-archive .card img {
+    height: auto;
+    width: 100%;
+}
+
+.youtube-archive .btn {
+    width: 100%;
+}
+
+
+.videos {
+    padding-top: 40px;
+    width: 100vw;
+}
+
+.videos > div {
+    margin-top: 0 !important;
+}
+
+.videos > div {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: 10%;
+    gap: 30px;
+}
+
+.header {
+    color: white;
+    margin-bottom: 20px;
+
+}
+
+.bottompadding {
+    min-height: 100px;
+}

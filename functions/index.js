@@ -214,6 +214,10 @@ app.get("/", async (req, res) => {
     res.render('index', { regions: await formatRegions() })
 });
 
+app.get("/videos", async (req, res) => {
+    res.render('videos', { regions: await formatRegions() })
+});
+
 app.get("/about", async (req, res) => {
     res.render('mission', { regions: await formatRegions() })
 });
