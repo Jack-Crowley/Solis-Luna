@@ -51,3 +51,14 @@
 .bottompadding {
     min-height: 100px;
 }
+
+
+@media screen and (max-width: 767px) { 
+    .videos > div {
+        display: block;
+    }
+
+    .card {
+        margin-bottom: 30px;
+    }
+}

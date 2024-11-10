@@ -41,7 +41,7 @@
             <a class="navbar-brand" href="/">
                 <img src="/images/solis.png" alt="" height="100">
             </a>
-            <a class="nav-link nav-header" style="color:#01033e">Solis and Luna Arts</a>
+            <a class="nav-link nav-header">Solis and Luna Arts</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -67,7 +67,7 @@
                                 <% if (region.expanded) { %>
                                     <li>
                                         <a class="dropdown-item" href="#"><%=region.name%> &raquo;</a>
-                                        <ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
+                                        <ul class="dropdown-menu dropdown-submenu dropdown-submenu-right">
                                             <% region.regions.forEach((subsection) => { %>
                                                 <li><a class="dropdown-item" href="/region/<%=region.id%>/<%=subsection.id%>"><%=subsection.name%></a></li>
                                             <% }) %>
@@ -77,10 +77,8 @@
                                     <li><a class="dropdown-item" href="/region/<%=region.id%>"><%=region.name%></a></li>  
                                 <% } %>
                             <% }) %>
+                            <li><a class="dropdown-item" href="/getinvolved">Venues</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item volunteer">
-                        <a class="nav-link" href="/volunteer">Volunteer</a>
                     </li>
                     <li class="nav-item blog">
                         <a class="nav-link" href="/blog">Blog</a>
@@ -91,8 +89,8 @@
                     <li class="nav-item blog">
                         <a class="nav-link" href="/press">Press</a>
                     </li>
-                    <li class="nav-item blog">
-                        <a class="nav-link" href="/getinvolved">Get Involved</a>
+                    <li class="nav-item blog" style="color:black !important;">
+                        <a class="nav-link" href="/videos">Videos</a>
                     </li>
                 </ul>
             </div>
