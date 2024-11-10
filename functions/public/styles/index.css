@@ -165,7 +165,7 @@
 
 .column {
     background-color: white;
-    height: 500px;
+    min-height: 500px;
     text-align: center;
     padding: 10px;
     display: flex;
