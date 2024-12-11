@@ -188,6 +188,22 @@
     padding: 5% 2%;
 }
 
+.logosContainer {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.logos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 80px;
+}
+
+.logos img {
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+
 @media screen and (max-width: 767px) { 
     .columns {
         display: block;

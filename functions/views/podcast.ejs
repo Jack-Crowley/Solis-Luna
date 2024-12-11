@@ -69,6 +69,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="/executives">Executive Team</a></li>
                             <li><a class="dropdown-item" href="/writing">Writing Team</a></li>
+                            <li><a class="dropdown-item" href="/getinvolved">Venues</a></li>
                             <% regions.forEach((region) => { %>
                                 <% if (region.expanded) { %>
                                     <li>
@@ -83,7 +84,6 @@
                                     <li><a class="dropdown-item" href="/region/<%=region.id%>"><%=region.name%></a></li>  
                                 <% } %>
                             <% }) %>
-                            <li><a class="dropdown-item" href="/getinvolved">Venues</a></li>
                         </ul>
                     </li>
                     <li class="nav-item blog">
