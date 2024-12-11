@@ -210,6 +210,22 @@
         padding: 25px 0;
     }
 
+    .logosContainer {
+        width: 95%;
+        margin-left: 2.5%;
+    }
+    
+    .logos {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .logos img {
+        aspect-ratio: 1/1;
+        width: 100%;
+    }
+
     .column {
         margin-left:10%;
         margin-right:10%;
