@@ -64,20 +64,27 @@
                             <li><a class="dropdown-item" href="/executives">Executive Team</a></li>
                             <li><a class="dropdown-item" href="/writing">Writing Team</a></li>
                             <li><a class="dropdown-item" href="/getinvolved">Venues</a></li>
-                            <% regions.forEach((region) => { %>
+                            <% regions.forEach((region)=> { %>
                                 <% if (region.expanded) { %>
                                     <li>
-                                        <a class="dropdown-item" href="#"><%=region.name%> &raquo;</a>
+                                        <a class="dropdown-item" href="#">
+                                            <%=region.name%> &raquo;
+                                        </a>
                                         <ul class="dropdown-menu dropdown-submenu dropdown-submenu-right">
-                                            <% region.regions.forEach((subsection) => { %>
-                                                <li><a class="dropdown-item" href="/region/<%=region.id%>/<%=subsection.id%>"><%=subsection.name%></a></li>
-                                            <% }) %>
+                                            <% region.regions.forEach((subsection)=> { %>
+                                                <li><a class="dropdown-item"
+                                                        href="/region/<%=region.id%>/<%=subsection.id%>">
+                                                        <%=subsection.name%>
+                                                    </a></li>
+                                                <% }) %>
                                         </ul>
                                     </li>
-                                <% } else { %>
-                                    <li><a class="dropdown-item" href="/region/<%=region.id%>"><%=region.name%></a></li>  
-                                <% } %>
-                            <% }) %>
+                                    <% } else { %>
+                                        <li><a class="dropdown-item" href="/region/<%=region.id%>">
+                                                <%=region.name%>
+                                            </a></li>
+                                        <% } %>
+                                            <% }) %>
                         </ul>
                     </li>
                     <li class="nav-item blog">
@@ -109,17 +116,28 @@
             <input type="text" class="searchInput" placeholder="Search">
             <a class="searchIcons"><img src="./images/search.png" alt=""></a>
         </div>
-        <% blogs.forEach(blog => { %>
-            <div class="singleBlog" data-blogid="<%=blog.blogID%>">
-                <img src="<%=blog.picture%>" alt="" class="reveal">
-                <div class="information reveal">
-                    <h2><%=blog.title%></h2>
-                    <h4><%=blog.author%></h4>
-                    <h5><%=blog.date%></h5>
-                    <h6><%=blog.description%></h6>
+        <% blogs.sort((a, b)=> new Date(b.date) - new Date(a.date));
+            %>
+
+            <% blogs.forEach(blog=> { %>
+                <div class="singleBlog" data-blogid="<%=blog.blogID%>">
+                    <img src="<%=blog.picture%>" alt="" class="reveal">
+                    <div class="information reveal">
+                        <h2>
+                            <%=blog.title%>
+                        </h2>
+                        <h4>
+                            <%=blog.author%>
+                        </h4>
+                        <h5>
+                            <%=blog.date%>
+                        </h5>
+                        <h6>
+                            <%=blog.description%>
+                        </h6>
+                    </div>
                 </div>
-            </div>
-        <% }) %>
+                <% }) %>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

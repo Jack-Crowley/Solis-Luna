@@ -29,6 +29,9 @@ done.addEventListener('click', () => {
     if (this.readyState == 4 && this.status == 200) {
       location.href = "/admin/blogs"
     }
+    else {
+      console.log(this)
+    }
   };
 
   XHR.open("POST", "/admin/blogs/edit/" + blogID);

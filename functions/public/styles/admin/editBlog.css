@@ -8,21 +8,26 @@
 }
 
 .info h2 {
-    color:white;
+    color: white;
     margin: 30px 20px;
 }
 
-.info h1, .text h1 {
+.info h1,
+.text h1 {
     margin-top: 50px;
-    color:white;
+    color: white;
     text-align: center;
 }
 
 .text h6 {
-    color:#b7b7b7;
+    color: #b7b7b7;
 }
 
-.submit, .updateText, .cancelEdit, .submitEdit, .changePhoto {
+.submit,
+.updateText,
+.cancelEdit,
+.submitEdit,
+.changePhoto {
     margin-top: 10px;
     display: block;
     text-decoration: none;
@@ -30,7 +35,7 @@
     width: 30%;
     margin-left: 35%;
     text-align: center;
-    color:white !important;
+    color: white !important;
     transition: all .2s;
     font-size: 2rem !important;
     grid-column-start: 1;
@@ -39,7 +44,8 @@
     border-radius: 50px;
 }
 
-.updateText, .cancelEdit {
+.updateText,
+.cancelEdit {
     background-color: #cfd44f;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -82,7 +88,7 @@
 
 .imageFile img {
     width: 20%;
-    margin-left:100px;
+    margin-left: 100px;
     display: inline-block;
     margin-top: 25px;
 }
@@ -91,7 +97,7 @@
     color: white;
     display: inline;
     margin-top: 20px;
-    margin-left:25px;
+    margin-left: 25px;
     font-size: 1.5rem;
 }
 
@@ -129,7 +135,7 @@
 
 .info label {
     display: inline-block;
-    color:white;
+    color: white;
 }
 
 .inputDiv {
@@ -149,7 +155,8 @@
     margin-top: 50px;
 }
 
-.submitEdit, .changePhoto {
+.submitEdit,
+.changePhoto {
     font-size: 1.3rem !important;
 }
 
