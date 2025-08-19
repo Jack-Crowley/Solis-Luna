@@ -1,14 +1,15 @@
 {
   "hosting": {
-    "public": "/functions/public",
+    "public": "functions/public",
     "rewrites": [
       {
         "source": "**",
         "function": "app"
       }
     ]
+    
   },
-  "functions": [
+  "functions": [ 
     {
       "source": "functions",
       "codebase": "default"
