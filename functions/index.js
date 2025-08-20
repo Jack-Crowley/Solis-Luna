@@ -405,31 +405,24 @@ app.post("/admin/login", async (req, res) => {
 })
 
 app.get("/admin/users", firebaseAuthMiddleware, async (req, res) => {
-    let collection = await db.collection("users").get()
-
-    let documents = collection.docs.map(doc => doc.id)
-
-    let users = []
-
-    for (let i = 0; i < documents.length; i++) {
-        if (users.length > 15) continue;
-
-        let user = {}
-
-        let doc = await db.collection("users").doc(documents[i]).get()
-        let data = doc.data()
-
-        user["name"] = data.fullName;
-        user["region"] = data.region
-        user["email"] = data.email
-        user["position"] = data.position
-        user["uid"] = documents[i]
-        user["time"] = getFormattedDate(data.created.toDate())
-
-        users.push(user)
+    const collection = await db.collection("users").get();
+    const users = [];
+    for (let i = 0; i < collection.docs.length; i++) {
+        const docSnap = collection.docs[i];
+        const data = docSnap.data();
+        if (!data) continue;
+        users.push({
+            name: data.fullName,
+            region: data.region,
+            email: data.email,
+            position: data.position,
+            uid: docSnap.id,
+            time: getFormattedDate(data.created.toDate())
+        });
     }
-
-    res.render('admin/usersPanel', { users: users })
+    // Provide dynamic region list (including subsections) for dropdown
+    const regions = await formatRegions();
+    res.render('admin/usersPanel', { users, regions });
 });
 
 app.post("/admin/users/search", firebaseAuthMiddlewarePost, async (req, res) => {

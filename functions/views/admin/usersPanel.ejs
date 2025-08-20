@@ -67,18 +67,21 @@
                 All
             </button>
             <div class="dropdown-menu region-options" aria-labelledby="dropdownMenuButton">
-                <li class="dropdown-item">
-                    California &raquo;
-                    <ul class="dropdown-menu dropdown-submenu dropdown-submenu-right r-subsection">
-                        <li class="dropdown-item">
-                            Los Angelos
+                <li class="dropdown-item" data-region="All">All</li>
+                <% if (typeof regions !== 'undefined') { regions.forEach(r => { %>
+                    <% if (!r.expanded) { %>
+                        <li class="dropdown-item" data-region="<%= r.id %>"><%= r.name %></li>
+                    <% } else { %>
+                        <li class="dropdown-item has-children">
+                            <span class="parent-text" data-region="<%= r.id %>"><%= r.name %> &raquo;</span>
+                            <ul class="dropdown-menu dropdown-submenu dropdown-submenu-right r-subsection">
+                                <% r.regions.forEach(sub => { %>
+                                    <li class="dropdown-item" data-region="<%= r.id %>:<%= sub.id %>"><%= sub.name %></li>
+                                <% }) %>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
-                <li class="dropdown-item">Florida</li>
-                <li class="dropdown-item">New Jersey</li>
-                <li class="dropdown-item">New York</li>
-                <li class="dropdown-item">Washington</li>
+                    <% } %>
+                <% }) } %>
             </div>
         </div>
         <input type="text" class="searchInput" placeholder="Search">
