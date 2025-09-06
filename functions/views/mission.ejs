@@ -34,6 +34,49 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/sections.css">
     <link rel="stylesheet" href="./styles/mission.css">
+    <style>
+        /* Simple slide/fade animations for mission page elements */
+        .animate-up, .animate-left, .animate-right, .animate-fade {
+            opacity: 0;
+            transition: transform 700ms cubic-bezier(.2,.9,.2,1), opacity 700ms ease;
+            will-change: transform, opacity;
+        }
+
+        .animate-up { transform: translateY(30px); }
+        .animate-left { transform: translateX(-40px); }
+        .animate-right { transform: translateX(40px); }
+        .animate-fade { transform: none; }
+
+        .in-view.animate-up,
+        .in-view.animate-left,
+        .in-view.animate-right,
+        .in-view.animate-fade {
+            transform: none;
+            opacity: 1;
+        }
+
+        /* allow a parent gaining `in-view` to reveal child elements that use animate-fade */
+        .in-view .animate-fade {
+            transform: none;
+            opacity: 1;
+        }
+
+        /* Stagger helpers for children */
+        .stagger > * {
+            transition-delay: calc(var(--stagger-index, 0) * 80ms);
+        }
+
+        /* Small tweak so images look nicer when sliding in */
+        .mission .image .chloe img { display: block; max-width: 100%; height: auto; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-up, .animate-left, .animate-right, .animate-fade {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -98,25 +141,81 @@
         </div>
     </nav>
     <div class="picture">
-        <img class='w-100 img-wide max-h-px' src="./images//Banners/mission.png" alt="" />
-        <div class="box">
+        <img class='w-100 img-wide max-h-px' src="/images/Banners/mission.png" alt="" />
+        <div class="box animate-up"> 
             <h2>Our Mission</h2>
         </div>
     </div>
     <div class="spacer"></div>
+    <!-- Our Founder Section -->
     <div class="mission section section1">
-        <h1>Our Mission</h1>
+        <h1 class="animate-up">Our Founder</h1>
         <div class="image">
-            <div class="chloe">
-                <img src="\images\chloe.png" alt="">
+            <div class="chloe animate-left">
+                <img src="/images/chloe.png" alt="Founder photo">
             </div>
-            <div class="text">
-                <h5>My name is Chloey Cho, a college freshman at University of California Los Angeles. Growing up, I witnessed my grandfather's daily struggle with PTSD from his service in Vietnam, compounded by severe insomnia. His experience resonated with me as I began to face my own health issues during high school. Discovering the therapeutic benefits of music during my research on insomnia and mental health was transformative. This realization led me to establish Solis and Luna Arts, a nonprofit dedicated to promoting mental health awareness through music therapy. By sharing my journey and advocating for accessible healthcare solutions, I aim to provide support and healing to individuals grappling with similar challenges.</h5>
-                <h6>- Chloey Cho</h6>
+            <div class="text animate-right stagger">
+                <h5>
+                    Hey everyone, my name is Chloey Cho and I'm the Founder and Executive Director of Solis and 
+                    Luna Arts. I began exploring different forms of the arts since I was a little girl, whether 
+                    it be painting pottery, playing the violin, or creating fashion designs. I was always motivated 
+                    to explore more beyond the arts, and this led me to build a passion for all forms of art. As a 
+                    music major in high school, I was always a part of numerous arts competitions like music, writing, 
+                    art ones. With this, I've been able to develop my love and passion for the arts. I noticed from 
+                    playing for audiences how much therapeutic benefits these arts can have on people of all kinds. 
+                    So, this led me to start Solis and Luna Arts, a nonprofit organization aiming to share therapeutic 
+                    creative sessions for all.
+                </h5>
             </div>
         </div>
-        
     </div>
+    <div class="spacer"></div>
+    <!-- Our Mission Section -->
+    <div class="mission section section1">
+        <h1 class="animate-up">Our Mission</h1>
+        <div class="text animate-fade stagger">
+            <h5>
+                Growing up, I witnessed my grandfather's daily struggle with PTSD from his service in Vietnam,
+                compounded by severe insomnia. His experience resonated with me as I began to face my own health
+                issues during high school. Discovering the therapeutic benefits of music during my research on
+                insomnia and mental health shifted how I would perceive music and other creative forms forever.
+                This realization led me to establish Solis and Luna Arts, a nonprofit dedicated to providing
+                therapeutic services through various forms of creative arts. By sharing my journey and advocating
+                for accessible healthcare solutions, I aim to provide support and healing to individuals grappling
+                with similar challenges.
+            </h5>
+        </div>
+    </div>
+    <script>
+        // IntersectionObserver that adds the `in-view` class to animate elements when they enter viewport.
+        (function () {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) return; // respect reduced motion
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        el.classList.add('in-view');
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                // Pre-mark stagger children so they are hidden initially and can be revealed
+                document.querySelectorAll('.stagger').forEach((staggerEl) => {
+                    Array.from(staggerEl.children).forEach((child, i) => {
+                        child.style.setProperty('--stagger-index', i);
+                        child.classList.add('animate-fade');
+                    });
+                });
+
+                const targets = document.querySelectorAll('.animate-up, .animate-left, .animate-right, .animate-fade, .stagger');
+                targets.forEach((t) => observer.observe(t));
+            });
+        })();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
